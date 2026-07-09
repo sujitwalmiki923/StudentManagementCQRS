@@ -1,6 +1,8 @@
 
 using FluentValidation;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
+using StudentManagementCQRS.Behaviors;
 using StudentManagementCQRS.Data;
 using StudentManagementCQRS.Features.Students.Commands.CreateStudent;
 using StudentManagementCQRS.Features.Students.Queries.GetAllStudents;
@@ -34,6 +36,12 @@ namespace StudentManagementCQRS
 
             //Registering Validator
             builder.Services.AddValidatorsFromAssemblyContaining<CreateStudentCommandValidator>();
+
+            //Validation Pipeline
+            builder.Services.AddTransient(
+                typeof(IPipelineBehavior<,>),
+                typeof(ValidationBehavior<,>));
+
 
             //Create Student Command
             builder.Services.AddScoped<CreateStudentCommandHandler>();
