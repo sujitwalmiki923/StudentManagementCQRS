@@ -1,4 +1,5 @@
 
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using StudentManagementCQRS.Data;
 using StudentManagementCQRS.Features.Students.Commands.CreateStudent;
@@ -30,6 +31,9 @@ namespace StudentManagementCQRS
             {
                 cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
             });
+
+            //Registering Validator
+            builder.Services.AddValidatorsFromAssemblyContaining<CreateStudentCommandValidator>();
 
             //Create Student Command
             builder.Services.AddScoped<CreateStudentCommandHandler>();
