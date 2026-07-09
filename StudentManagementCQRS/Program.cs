@@ -1,6 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using StudentManagementCQRS.Data;
+using StudentManagementCQRS.Features.Students.Commands.CreateStudent;
 
 namespace StudentManagementCQRS
 {
@@ -20,6 +21,8 @@ namespace StudentManagementCQRS
                     builder.Configuration.GetConnectionString("DefaultConnection")
                     );
             });
+
+            builder.Services.AddScoped<CreateStudentCommandHandler>();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
