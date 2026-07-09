@@ -17,11 +17,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Features\Students\Commands\" />
-    <Folder Include="Features\Students\Queries\" />
-    <Folder Include="DTOs\" />
-  </ItemGroup>
-
 </Project>

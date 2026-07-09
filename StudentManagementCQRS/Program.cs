@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using StudentManagementCQRS.Data;
 using StudentManagementCQRS.Features.Students.Commands.CreateStudent;
+using StudentManagementCQRS.Features.Students.Queries.GetAllStudents;
+using System.Reflection;
 
 namespace StudentManagementCQRS
 {
@@ -22,7 +24,18 @@ namespace StudentManagementCQRS
                     );
             });
 
+
+            //Registering Mediator
+            builder.Services.AddMediatR(cfg =>
+            {
+                cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+            });
+
+            //Create Student Command
             builder.Services.AddScoped<CreateStudentCommandHandler>();
+
+            //Get Student Query
+            builder.Services.AddScoped<GetAllStudentsQueryHandler>();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

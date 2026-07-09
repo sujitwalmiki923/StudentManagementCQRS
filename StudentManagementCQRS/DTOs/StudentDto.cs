@@ -1,9 +1,9 @@
-﻿using MediatR;
-
-namespace StudentManagementCQRS.Features.Students.Commands.CreateStudent
+﻿namespace StudentManagementCQRS.DTOs
 {
-    public class CreateStudentCommand : IRequest<int>
+    public class StudentDto
     {
+        public int Id { get; set; }
+
         public string Name { get; set; } = string.Empty;
 
         public int Age { get; set; }
